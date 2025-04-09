@@ -1,0 +1,48 @@
+/* Checkout.css */
+.checkout {
+    background-color: #f7fff7;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .checkout h2 {
+    color: #4ecdc4;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .checkout h4 {
+    color: #292f36;
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+  
+  .checkout table {
+    margin-top: 1rem;
+    background-color: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  
+  .checkout th {
+    background-color: #4ecdc4;
+    color: #fff;
+  }
+  
+  .checkout td {
+    vertical-align: middle;
+  }
+  
+  .checkout .text-end {
+    margin-top: 2rem;
+  }
+  
+  .checkout .btn-success {
+    background-color: #ff6b6b;
+    border: none;
+  }
+  
+  .checkout .btn-success:hover {
+    background-color: #ff5252;
+  }
