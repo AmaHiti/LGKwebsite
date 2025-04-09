@@ -1,0 +1,42 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 4%;
+    background-color: white;
+}
+.navbar .logo{
+    width: 80px;
+}
+.navbar .profile{
+    width: 80px;
+    border-radius: 50px;
+    border: 1px solid rgb(139, 139, 139);
+}
+.navbar p{
+    margin-left: 900px;
+    font-size: larger;
+    font-weight: 700;
+    font-family: 'Times New Roman', Times, serif;
+    border-radius: 3px;
+    border: solid 1px;
+    padding: 2px;
+}
+.navbar .admin-section {
+    display: flex;
+    flex-direction: column;
+}
+.navbar button {
+    margin-left: 910px;
+    margin-top: 15px;
+    font-size: medium;
+    font-weight: 400;
+    border-radius: 3px;
+    border: solid 1px;
+    background-color: #f5d1d1; 
+    cursor: pointer;
+    width: 100px;
+}
+.navbar button:hover{
+    background-color: aliceblue;
+}
