@@ -9,6 +9,8 @@ import 'dotenv/config';
 import ordrRouter from './routes/oderRouter.js';
 import adminRouter from './routes/adminRouter.js';
 import reportrouter from './routes/reportRouter.js';
+import reservationRouter from './routes/reservationRouter.js';
+
 const app = express();
 const port = process.env.PORT || 4000;
 
@@ -25,7 +27,7 @@ app.use('/api/feedback',feedbackRouter);
 app.use("/api/order",ordrRouter);
 app.use("/api/admin",adminRouter);
 app.use("/api/report",reportrouter);
-
+app.use("/api/reservation",reservationRouter);
 
 
 
