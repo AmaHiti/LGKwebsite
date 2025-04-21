@@ -24,7 +24,7 @@ const Navbar = ({ isCollapsed }) => {
     <div className={`navbar ${isCollapsed ? 'expanded' : ''}`}>
       <img src={assets.logo} alt="logo" className="logo" />
       <div className="admin-section">
-        <p>Admin Dashboard</p>
+        <h2>Life's Good Kitchen</h2>
         {token && <button onClick={handleLogout}>Logout</button>}
       </div>
       <img src={assets.profile_image} alt="profile" className="profile" />
