@@ -73,4 +73,43 @@ foodRouter.post('/remove', async (req, res) => {
     }
 });
 
+foodRouter.put('/update', upload.single('image'), async (req, res) => {
+    const { FoodID, name, description, price, category } = req.body;
+
+    try {
+        // Fetch existing image filename (in case we need to delete the old one)
+        const [existing] = await pool.query('SELECT image FROM foods WHERE FoodID = ?', [FoodID]);
+        if (existing.length === 0) {
+            return res.status(404).json({ success: false, message: 'Food not found' });
+        }
+
+        let updateQuery = `UPDATE foods SET name = ?, description = ?, price = ?, category = ?`;
+        const params = [name, description, price, category];
+
+        // Handle image if uploaded
+        if (req.file) {
+            const newImage = req.file.filename;
+            const oldImage = existing[0].image;
+
+            // Delete old image file
+            fs.unlink(path.join(uploadsDir, oldImage), (err) => {
+                if (err) console.error('Error deleting old image:', err);
+            });
+
+            updateQuery += `, image = ?`;
+            params.push(newImage);
+        }
+
+        updateQuery += ` WHERE FoodID = ?`;
+        params.push(FoodID);
+
+        await pool.query(updateQuery, params);
+        res.status(200).json({ success: true, message: 'Food updated successfully' });
+    } catch (error) {
+        console.error('Error updating food:', error);
+        res.status(500).json({ success: false, message: 'Error updating food' });
+    }
+});
+
+
 export default foodRouter;

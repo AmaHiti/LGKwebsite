@@ -57,7 +57,7 @@ const Sidebar = ({ isCollapsed, toggleSidebar }) => {
           }
         >
           <div className="icon-container">
-            <img src={assets.order_icon} alt="" />
+            <img src={assets.reserve_icon} alt="" />
           </div>
           <p className={isCollapsed ? 'hidden' : ''}>Reservations</p>
         </NavLink>

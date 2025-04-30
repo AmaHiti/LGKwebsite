@@ -6,7 +6,7 @@ import CustomNavbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import Home from "./Pages/Home";
 import OrderConfirmation from "./Pages/OrderConfirmation";
-// App.js
+// App.jsx
 import React from "react";
 
 const App = () => {

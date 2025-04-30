@@ -1,77 +1,86 @@
 import React, { useState } from 'react';
 import Navbar from './components/Navbar/Navbar';
 import Sidebar from './components/Sidebar/Sidebar';
-import { Route, Routes, useLocation } from 'react-router-dom';
+import { Route, Routes, useLocation, Navigate } from 'react-router-dom';
 import Add from './pages/Add/Add';
 import List from './pages/List/List';
 import Oders from './pages/Order/Oders';
-import Reservations from './pages/Reservation/Reservations';
+import AdminLoginSignup from './pages/LoginSingup/LoginSignup';
 import FeedbackList from './pages/Feedback/Feedback';
 import UserList from './pages/Users/Users';
 import TopSellingChart from './pages/Report/Report';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import './index.css';
+import './index.css'; // <-- for layout styles
 
 const App = () => {
-  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
-  const [loggedIn, setLoggedIn] = useState(false);
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [error, setError] = useState('');
   const url = "http://localhost:4000";
+  const location = useLocation();
+  const token = localStorage.getItem('token');
+  const isLoggedIn = !!token;
 
-  const handleLogin = (e) => {
-    e.preventDefault();
-    // Hardcoded credentials
-    if (username === 'admin' && password === '1234') {
-      setLoggedIn(true);
-    } else {
-      setError('Invalid username or password');
-    }
-  };
-
-  if (!loggedIn) {
-    return (
-      <div className="login-signup">
-        <h2>Login</h2>
-        <form onSubmit={handleLogin}>
-          <input
-            type="text"
-            placeholder="Username"
-            value={username}
-            onChange={(e) => setUsername(e.target.value)}
-          />
-          <input
-            type="password"
-            placeholder="Password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-          />
-          <button type="submit">Login</button>
-          {error && <div className="error">{error}</div>}
-        </form>
-      </div>
-    );
-  }
+  const [isSidebarCollapsed, setIsSidebarCollapsed] = useState(false);
+  const isLoginPage = location.pathname === "/";
 
   return (
     <div className={`app-container ${isSidebarCollapsed ? 'collapsed' : ''}`}>
-      <Sidebar
-        isCollapsed={isSidebarCollapsed}
-        toggleSidebar={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
-      />
+      {!isLoginPage && isLoggedIn && (
+        <Sidebar
+          isCollapsed={isSidebarCollapsed}
+          toggleSidebar={() => setIsSidebarCollapsed(!isSidebarCollapsed)}
+        />
+      )}
+
       <div className="main-section">
         <ToastContainer />
-        <Navbar isSidebarCollapsed={isSidebarCollapsed} />
+        {!isLoginPage && isLoggedIn && (
+          <Navbar isSidebarCollapsed={isSidebarCollapsed} />
+        )}
+
         <Routes>
-          <Route path="/add" element={<Add url={url} />} />
-          <Route path="/list" element={<List url={url} />} />
-          <Route path="/orders" element={<Oders url={url} />} />
-          <Route path="/reservations" element={<Reservations url={url} />} />
-          <Route path="/feedback" element={<FeedbackList url={url} />} />
-          <Route path="/users" element={<UserList url={url} />} />
-          <Route path="/report" element={<TopSellingChart url={url} />} />
+          <Route
+            path="/"
+            element={
+              isLoggedIn ? <Navigate to="/add" /> : <AdminLoginSignup />
+            }
+          />
+          <Route
+            path="/add"
+            element={
+              isLoggedIn ? <Add url={url} /> : <Navigate to="/" />
+            }
+          />
+          <Route
+            path="/list"
+            element={
+              isLoggedIn ? <List url={url} /> : <Navigate to="/" />
+            }
+          />
+          <Route
+            path="/orders"
+            element={
+              isLoggedIn ? <Oders url={url} /> : <Navigate to="/" />
+            }
+          />
+          <Route
+            path="/feedback"
+            element={
+              isLoggedIn ? <FeedbackList url={url} /> : <Navigate to="/" />
+            }
+          />
+          <Route
+            path="/users"
+            element={
+              isLoggedIn ? <UserList url={url} /> : <Navigate to="/" />
+            }
+          />
+          <Route
+            path="/report"
+            element={
+              isLoggedIn ? <TopSellingChart url={url} /> : <Navigate to="/" />
+            }
+          />
+          <Route path="*" element={<Navigate to="/" />} />
         </Routes>
       </div>
     </div>

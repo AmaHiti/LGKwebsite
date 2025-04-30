@@ -10,6 +10,7 @@ import ordrRouter from './routes/oderRouter.js';
 import adminRouter from './routes/adminRouter.js';
 import reportrouter from './routes/reportRouter.js';
 import reservationRouter from './routes/reservationRouter.js';
+import promotionRouter from './routes/promotionRouter.js';
 
 const app = express();
 const port = process.env.PORT || 4000;
@@ -28,7 +29,7 @@ app.use("/api/order",ordrRouter);
 app.use("/api/admin",adminRouter);
 app.use("/api/report",reportrouter);
 app.use("/api/reservation",reservationRouter);
-
+app.use("/api/promotion",promotionRouter);
 
 
 // Test database connection

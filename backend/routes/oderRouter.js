@@ -5,7 +5,7 @@ import { createOrderController,getOrdersByUserIdController,listOrdersController,
 const orderRouter = express.Router();
 
 
-orderRouter.post("/place", authMiddleware, createOrderController);
+orderRouter.post("/place", authMiddleware ,  createOrderController);
 orderRouter.post("/list",listOrdersController);
 orderRouter.get("/get",authMiddleware,getOrdersByUserIdController)
 orderRouter.post("/status",updateOrderStatusController);
