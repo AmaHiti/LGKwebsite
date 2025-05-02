@@ -1,20 +1,25 @@
-import { createOrder,listOrders,getOrdersByUserId,updateOrderStatus,updateOrderTime} from "../models/orderModel.js";
+import { createOrder, getOrdersByUserId, listOrders, updateOrderStatus, updateOrderTime } from "../models/orderModel.js";
+
 import pool from "../config/db.js";
 
-
-
-
 export const createOrderController = async (req, res) => {
-    const { userId, cartItems, totalAmount } = req.body;
+    
+    const { userId, cartItems } = req.body;
 
     try {
-        const orderId = await createOrder(userId, cartItems, totalAmount);
-        res.status(201).send(`Order ${orderId} created successfully`);
+        
+        for (const itemId in cartItems) {
+            const quantity = cartItems[itemId];
+            await createOrder(userId, itemId, quantity);
+        }
+        
+        res.status(201).send('Order created successfully');
     } catch (error) {
         console.error('Error creating order:', error);
         res.status(500).send('Internal Server Error');
     }
 };
+
 
 
 export const getOrdersByUserIdController = async (req, res) => {
@@ -65,28 +70,14 @@ export const listOrdersController = async (req, res) => {
     }
 };
 const deleteOrdersByUserId = async (userId) => {
+    const DELETE_ORDERS_BY_USER_QUERY = 'DELETE FROM orders WHERE userId = ?';
     try {
-     
-        const DELETE_ORDER_DETAILS_QUERY = `
-            DELETE FROM \`order_details\`
-            WHERE OrderID IN (SELECT OrderID FROM \`orders\` WHERE CustomerID = ?)
-        `;
-        await pool.query(DELETE_ORDER_DETAILS_QUERY, [userId]);
-
-       
-        const DELETE_ORDERS_QUERY = `
-            DELETE FROM \`orders\`
-            WHERE CustomerID = ?
-        `;
-        await pool.query(DELETE_ORDERS_QUERY, [userId]);
-
-        console.log('Orders deleted successfully');
+        await pool.query(DELETE_ORDERS_BY_USER_QUERY, [userId]);
     } catch (error) {
         console.error('Error deleting orders by user ID:', error);
         throw error;
     }
 };
-
 
 export const deleteOrdersByUserController = async (req, res) => {
     const { userId } = req.body; 

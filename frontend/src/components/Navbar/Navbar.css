@@ -1,0 +1,143 @@
+.navbar{
+    padding: 20px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color:rgba(0, 0, 0, 0.747);
+
+
+ 
+   
+}
+.navbar .logo{
+    margin-top: -20px;
+    width: 120px;
+    margin-left: 10px;
+    
+}
+.navbar .logo-text{
+    font-weight: 700;
+    color:rgb(255, 255, 255);
+    font-size: max(2vw,22px);
+    text-shadow: 0.8px 0.8px rgb(255, 255, 255);
+    margin-left: -220px;
+    display: flex;
+
+}
+.navbar-menu{
+    display: flex;
+    list-style: none;
+    gap: 50px;
+    color: #ffffff;
+    font-size: 18px;
+}
+.navbar-right{
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+.navbar-right .a{
+    margin-top: 3px;
+   width: 43px;
+   border-radius: 50px;
+}
+.navbar button{
+    background-color: #ffffff; /* Green */
+    border: nonw;
+    border-radius: 50px;
+    color: rgb(5, 5, 5);
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+    font-size: large;
+    margin-right: 10px;
+}
+.navbar button:hover{
+    background-color: #9cbde4;
+
+}
+.navbar .active{
+    padding-bottom: 2px;
+    border-bottom: 2px solid #ffffff;
+}
+.navbar li{
+    cursor: pointer;
+}
+.navbar-search-icon{
+position: relative;
+}
+
+.navbar-profile{
+    position: relative;
+    cursor: pointer;
+    margin-right: 45px;
+}
+.navbar-profile .b{
+    margin-top: 3px;
+    width: 45px;
+    border-radius: 50px;
+}
+.nav-profile-dropdown{
+    position: absolute;
+    display: none;
+    right: 0;
+    z-index: 1;
+}
+.navbar-profile:hover .nav-profile-dropdown{
+    display: flex;
+    flex-direction: column;
+    
+    background-color: #fff2ef;
+    padding: 12px 25px;
+    border-radius: 4px;
+    border: 1px solid tomato;
+    outline: 2px solid white;
+    list-style: none;
+}
+.nav-profile-dropdown li:hover{
+   color: #d7e611;
+}
+.nav-profile-dropdown button{
+    font-size: 10px;
+   padding-top:8px ;
+   padding-bottom:8px ;
+   padding-right: 1px;
+   padding-left: 1px;
+    width: 100px;   
+}
+.nav-profile-dropdown button:hover{
+    color: #f7f5f5;
+    background-color: #eb0505;
+}
+.cart-dot {
+    position: relative;
+    top: 5px;
+    right: 0px;
+    width: 12x;
+    height: 2px;
+    background-color: red;
+    border-radius: 50%;
+  }
+  .nav-profile-dropdown img{
+    width: 40px;
+
+  }
+  
+  .nav-profile-dropdown hr{
+    margin-top: 1px;
+
+  }
+  
+  
+@media (max-width:1050px){
+    .navbar .logo{
+        width: 150px;
+    }
+    .navbar-menu{
+        gap: 20px;
+        
+    }
+}

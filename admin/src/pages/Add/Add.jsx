@@ -1,5 +1,7 @@
-import React, { useState } from 'react';
 import './Add.css';
+
+import React, { useState } from 'react';
+
 import { assets } from '../../assets/assets';
 import axios from "axios";
 import { toast } from 'react-toastify';
@@ -7,6 +9,7 @@ import { toast } from 'react-toastify';
 const Add = ({ url }) => {
     const [image, setImage] = useState(null);
     const [data, setData] = useState({
+        id:"",
         name: "",
         description: "",
         price: "",
@@ -26,6 +29,7 @@ const Add = ({ url }) => {
     const onSubmitHandler = async (event) => {
         event.preventDefault();
         const formData = new FormData();
+        formData.append("id", data.id);
         formData.append("name", data.name);
         formData.append("description", data.description);
         formData.append("price", Number(data.price));
@@ -36,6 +40,7 @@ const Add = ({ url }) => {
             const response = await axios.post(`${url}/api/food/add`, formData);
             if (response.data.success) {
                 setData({
+                    id:"",
                     name: "",
                     description: "",
                     price: "",
@@ -55,6 +60,10 @@ const Add = ({ url }) => {
     return (
         <div className="add">
             <form className="flex-col" onSubmit={onSubmitHandler}>
+                <div className="add-product-name">
+                    <p>Product ID</p>
+                    <input onChange={onChangeHandler} value={data.id} type="text" name="id" placeholder="Type here" required />
+                </div>
                 <div className="add-img-upload flex-col">
                     <p>Upload Image</p>
                     <label htmlFor="image">
@@ -74,10 +83,10 @@ const Add = ({ url }) => {
                     <div className="add-category flex-col">
                         <p>Product category</p>
                         <select onChange={onChangeHandler} value={data.category} name="category" required>
-                            <option value="Pizza">Pizza</option>
-                            <option value="Wraps">Wraps</option>
-                            <option value="Buns">Buns</option>
-                            <option value="Beverages">Beverages</option>
+                            <option value="Lunch">Lunch</option>
+                            <option value="Soup">Soup</option>
+                            <option value="Dinner">Dinner</option>
+                            <option value="Offers">Offers</option>
                         </select>
                     </div>
                     <div className="add-price flex-col">

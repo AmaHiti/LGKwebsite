@@ -1,60 +1,51 @@
-.order-table-format {
+.order-table-format{
     display: grid;
-    grid-template-columns: 0.5fr 0.5fr 0.6fr 0.8fr 0.8fr  0.8fr ; 
+    grid-template-columns: 1fr 1fr 1fr 1fr 1.8fr 2fr 1.5fr;
     align-items: center;
-    gap:50px;
-    padding: 12px 15px;
+    gap: 10px;
+    padding: 12px 15px ;
     border: 1px solid #cacaca;
-    font-size: 13px;
+    font-size: 13px ;
     text-align: justify;
     margin-left: -60px;
-    width: 1000px;
-  }
-  
-  .order-table-format.title {
+}
+.order-table-format.title {
     background-color: #d1e76d;
-  }
-  
-  .order-table-format b {
+
+}
+
+.order-table-format.title b{
     font-size: 16px;
     color: black;
-  }
-  
-  .order-table-format p {
+}
+.order-table-format p{
     font-size: medium;
-  }
-  
-  .cursor {
+}
+.cursor{
     cursor: pointer;
-  }
-  
-  select {
+}
+select {
     width: 150px;
     padding: 5px;
     border-radius: 5px;
   }
-  
-  .s {
+ .s{
     color: rgb(5, 21, 243);
     font-weight: 700;
     font-size: medium;
-  }
-  
-  .d {
+ }
+.d{
     color: rgb(170, 154, 8);
     font-weight: 700;
     font-size: medium;
-  }
-  
-  .f {
+}
+.f{
     color: rgb(25, 185, 4);
     font-weight: 700;
     font-size: medium;
-  }
-  
-  .g {
+}
+.g{
     color: rgb(243, 21, 5);
     font-weight: 700;
     font-size: medium;
-  }
-  
+}

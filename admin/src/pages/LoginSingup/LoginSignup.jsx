@@ -94,6 +94,6 @@ const AdminLoginSignup = () => {
       {error && <div className="error">{error}</div>}
     </div>
   );
-}; 
+};
 
 export default AdminLoginSignup;

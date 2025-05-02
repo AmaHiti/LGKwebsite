@@ -13,8 +13,8 @@ const addFeedback = async (req, res) => {
 
 const deleteFeedback = async (req, res) => {
     try {
-        const { userId } = req.body;
-        await feedbackModel.deleteFeedback(userId);
+        const { feedbackId } = req.body;
+        await feedbackModel.deleteFeedback(feedbackId);
         res.json({ success: true, message: "Feedback Deleted" });
     } catch (error) {
         console.error('Error deleting feedback:', error);

@@ -10,7 +10,7 @@ const addToCart = async (req, res) => {
   try {
     const SELECT_CART_ITEM_QUERY = `
             SELECT * FROM cart_items
-            WHERE CustomerID = ? AND FoodID = ?
+            WHERE UserID = ? AND FoodID = ?
         `;
     const [existingCartItem] = await pool.query(SELECT_CART_ITEM_QUERY, [
       userId,
@@ -21,12 +21,12 @@ const addToCart = async (req, res) => {
       const UPDATE_CART_ITEM_QUERY = `
                 UPDATE cart_items
                 SET quantity = quantity + 1
-                WHERE CustomerID = ? AND FoodID= ?
+                WHERE UserID = ? AND FoodID= ?
             `;
       await pool.query(UPDATE_CART_ITEM_QUERY, [userId, itemId]);
     } else {
       const INSERT_CART_ITEM_QUERY = `
-                INSERT INTO cart_items (CustomerID, FoodID, quantity)
+                INSERT INTO cart_items (UserID, FoodID, quantity)
                 VALUES (?, ?, 1)
             `;
       await pool.query(INSERT_CART_ITEM_QUERY, [userId, itemId]);
@@ -53,7 +53,7 @@ const removeFromCart = async (req, res) => {
   try {
     const SELECT_CART_ITEM_QUERY = `
             SELECT * FROM cart_items
-            WHERE CustomerID = ? AND FoodID = ?
+            WHERE UserID = ? AND FoodID = ?
         `;
     const [existingCartItem] = await pool.query(SELECT_CART_ITEM_QUERY, [
       userId,
@@ -66,14 +66,14 @@ const removeFromCart = async (req, res) => {
       if (quantity === 0) {
         const DELETE_CART_ITEM_QUERY = `
                     DELETE FROM cart_items
-                    WHERE CustomerID = ? AND FoodID = ?
+                    WHERE UserID = ? AND FoodID = ?
                 `;
         await pool.query(DELETE_CART_ITEM_QUERY, [userId, itemId]);
       } else {
         const UPDATE_CART_ITEM_QUERY = `
                     UPDATE cart_items
                     SET quantity = ?
-                    WHERE CustomerID = ? AND FoodID = ?
+                    WHERE UserID = ? AND FoodID = ?
                 `;
         await pool.query(UPDATE_CART_ITEM_QUERY, [quantity, userId, itemId]);
       }
@@ -102,7 +102,7 @@ const getCart = async (req, res) => {
             SELECT ci.FoodID, ci.quantity, f.name, f.price
             FROM cart_items ci
             INNER JOIN foods f ON ci.FoodID = f.FoodID
-            WHERE ci.CustomerID = ?
+            WHERE ci.UserID = ?
 
         `;
     const [cartItems] = await pool.query(SELECT_CART_ITEMS_QUERY, [userId]);
@@ -124,7 +124,7 @@ const clearCart = async (req, res) => {
   try {
     const DELETE_CART_ITEMS_QUERY = `
             DELETE FROM cart_items
-            WHERE CustomerID = ?
+            WHERE UserID = ?
         `;
     await pool.query(DELETE_CART_ITEMS_QUERY, [userId]);
 

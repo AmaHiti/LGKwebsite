@@ -46,8 +46,8 @@ const FeedbackList = ({ url }) => {
                 </div>
                 {feedbackList.map((feedback, index) => (
                     <div key={index} className="list-table-format1">
-                        <p>{feedback.CustomerID}</p>
-                        <p>{feedback.customer_name}</p>
+                        <p>{feedback.UserID}</p>
+                        <p>{feedback.c_name}</p>
                         <p>{feedback.created_at}</p>
                         <div>{renderFeedbackText(feedback.feedback_text)}</div>
                     </div>

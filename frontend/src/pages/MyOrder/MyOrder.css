@@ -1,0 +1,79 @@
+/* MyOrder.css */
+
+.my-order-container {
+    margin: 20px auto;
+    max-width: 1000px;
+  }
+  
+  .order-list {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .order-item {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    padding: 10px;
+  }
+  
+  .order-item h2 {
+    margin-top: 0;
+    font-size: 18px;
+  }
+  
+  .order-details {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .order-detail {
+    flex: 1;
+  }
+  
+  .order-detail label {
+    font-weight: bold;
+  }
+  
+  .order-detail p {
+    margin-top: 5px;
+  }
+  
+  .no-orders {
+    font-style: italic;
+    color: #888;
+  }
+  .order-button {
+    background-color: #111111;
+    color: white; 
+    padding: 10px 20px;
+    border: none; 
+    border-radius: 5px; 
+    cursor: pointer; 
+    
+  }
+  
+  .order-button:hover {
+    background-color: #343435; 
+  }
+  .order-details1 {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .order-detail1 {
+    flex: 1;
+  }
+  .order-detail1 label {
+    font-weight: bold;
+  }
+  .order-detail1 p::before {
+    margin-top: 12px;
+    content: ""; 
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: green; 
+    margin-right: 8px; 
+    
+  }  

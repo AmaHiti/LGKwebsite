@@ -36,8 +36,8 @@ const UserList = ({ url }) => {
                 </div>
                 {userList.map((user, index) => (
                     <div key={index} className="list-table-format2">
-                        <p>{user.CustomerID}</p>
-                        <p>{user.customer_name}</p>
+                        <p>{user.UserID}</p>
+                        <p>{user.name}</p>
                         <p>{user.email}</p>
                         <p>{user.tel_num}</p>
                     </div>

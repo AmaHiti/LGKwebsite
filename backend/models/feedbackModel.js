@@ -3,7 +3,7 @@ import pool from "../config/db.js";
 const feedbackModel = {
     addFeedback: async (userId, c_name, feedbackText) => {
         const INSERT_FEEDBACK_QUERY = `
-            INSERT INTO feedbacks (CustomerID, customer_name,feedback_text)
+            INSERT INTO feedbacks (UserID, c_name,feedback_text)
             VALUES (?, ?,?)
         `;
         try {
@@ -13,10 +13,10 @@ const feedbackModel = {
             throw error;
         }
     },
-    deleteFeedback: async (userId) => {
-        const DELETE_FEEDBACK_QUERY = 'DELETE FROM feedbacks WHERE CustomerID = ?';
+    deleteFeedback: async (feedbackId) => {
+        const DELETE_FEEDBACK_QUERY = 'DELETE FROM feedbacks WHERE id = ?';
         try {
-            await pool.query(DELETE_FEEDBACK_QUERY, [userId]);
+            await pool.query(DELETE_FEEDBACK_QUERY, [feedbackId]);
         } catch (error) {
             console.error('Error deleting feedback:', error);
             throw error;

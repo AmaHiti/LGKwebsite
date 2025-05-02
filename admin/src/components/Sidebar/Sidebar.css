@@ -1,140 +1,38 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
-
-.side-bar {
-    width: 250px;
+.side-bar{
+    width: 18%;
     min-height: 100vh;
-    background: linear-gradient(180deg, #81c784 0%, #aed581 100%);
-    color: #000;
-    font-size: 16px;
-    font-family: 'Poppins', sans-serif;
-    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.1);
-    transition: width 0.3s ease;
-    position: fixed;
-    left: 0;
-    top: 0;
-    z-index: 100;
+    border: 1.5px solid #000000;
+    border-top: 0;
+    background-color: rgb(218, 235, 229);
+    font-size: max(1vw,18px);
+   
 }
-  
-  .side-bar.collapsed {
-    width: 80px;
-  }
-  
-  .sidebar-header {
+.side-bar-options{
+    padding: 52px;
     display: flex;
-    color: #000;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 15px;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-  }
-  
-  .sidebar-header h3 {
-    margin: 0;
-    font-size: 20px;
-    font-weight: 500;
-    color: #fff;
-  }
-  
-  .toggle-btn {
-    background: transparent;
-    border: none;
-    color: #fff;
-    cursor: pointer;
-    font-size: 18px;
-    padding: 5px 10px;
-    border-radius: 4px;
-    transition: background 0.2s;
-  }
-  
-  .toggle-btn:hover {
-    background: rgba(255, 255, 255, 0.1);
-  }
-  
-  .side-bar-options {
-    padding: 20px 0;
-    display: flex;
+    padding-left: 20%;
     flex-direction: column;
-    gap: 8px;
-  }
-  
-  .side-bar-option {
-    display: flex;
-    align-items: center;
-    gap: 16px;
-    padding: 12px 15px;
-    color: #000;
-    text-decoration: none;
-    border-left: 4px solid transparent;
-    transition: all 0.2s ease;
-  }
-  
-  .side-bar-option:hover {
-    background-color: rgba(255, 255, 255, 0.1);
-    color: #fff;
-  }
-  
-  .side-bar-option.active {
-    background-color: rgba(255, 255, 255, 0.1);
-    border-left: 4px solid #3498db;
-    color: #fff;
-  }
-  
-  .icon-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 45px;
-    height: 45px;
-  }
-  
-  .side-bar-option p {
-    margin: 0;
-    white-space: nowrap;
-  }
-  
-  .hidden {
-    display: none;
-  }
-  
-  .a {
-    width: 24px;
-    height: 24px;
-  }
-  
-  .b {
-    width: 24px;
-    height: 24px;
-  }
-  
-  /* Add this to handle content positioning when sidebar is present */
-  .content-container {
-    margin-left: 250px;
-    transition: margin-left 0.3s ease;
-  }
-  
-  .content-container.sidebar-collapsed {
-    margin-left: 80px;
-  }
-  
-  /* For mobile responsiveness */
-  @media (max-width: 768px) {
-    .side-bar {
-      width: 80px;
-    }
-    
-    .side-bar-option p,
-    .sidebar-header h3 {
-      display: none;
-    }
-    
-    .content-container {
-      margin-left: 80px;
-    }
-  }
+    gap: 20px;
+}
+ .a{
+    width: 30px;
+}
 
-  .side-bar .icon-container img {
-    width: 34px;
-    height: 34px;
-    object-fit: contain;
-  }
-  
+.side-bar-option{
+    width: 135%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    border: 3px solid #a9a9a9;
+    border-right: 0;
+    padding: 8px 10px;
+    border-radius: 3px 0px 0px 3px;
+    cursor: pointer;
+    background-color:white;
+}
+.side-bar-option.active{
+    background-color: rgb(252, 252, 252);
+    border-color: tomato;
+
+
+}
