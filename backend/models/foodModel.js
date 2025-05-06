@@ -12,7 +12,7 @@ const pool = mysql.createPool({
 
 const CREATE_TABLE_QUERY = `
     CREATE TABLE IF NOT EXISTS foods (
-        FoodID VARCHAR(50) AUTO_INCREMENT PRIMARY KEY,
+        FoodID INT AUTO_INCREMENT PRIMARY KEY,
         name VARCHAR(255) NOT NULL,
         description TEXT NOT NULL,
         price DECIMAL(10, 2) NOT NULL,
@@ -21,6 +21,10 @@ const CREATE_TABLE_QUERY = `
     )
 `;
 
+const ALTER_TABLE_QUERY = `
+    ALTER TABLE foods
+    MODIFY COLUMN FoodID INT AUTO_INCREMENT PRIMARY KEY
+`;
 
 pool.query(CREATE_TABLE_QUERY, (err, results, fields) => {
     if (err) {
@@ -28,6 +32,14 @@ pool.query(CREATE_TABLE_QUERY, (err, results, fields) => {
         return;
     }
     console.log('Foods table created successfully');
+});
+
+pool.query(ALTER_TABLE_QUERY, (err, results, fields) => {
+    if (err) {
+        console.error('Error altering foods table:', err);
+        return;
+    }
+    console.log('Foods table altered successfully');
 });
 
 

@@ -1,39 +1,76 @@
-.explore-menu{
+.explore-menu {
     display: flex;
     flex-direction: column;
-    gap: 20px;
-    
-
-}
-.explore-menu h1{
-    color: #262626;
-    font-weight: 600;
-    text-align: center;
-}
-.explore-menu-list{
-    display: flex;
-    justify-content: space-between;
-    gap: 30px;
-    margin: 20px 0px;
-    
-}
-.explore-menu-list-item img {
-    width: 318px;  
-    height: auto;  
-    margin-right: 30px; 
-    border-radius: 30px;
-    border: 2px solid #000;
-    cursor: pointer;
-  }
-  .explore-menu-list-item p {
-   margin-top: 10px;
-   color: #000000;
-   font-size: max(1.4vw,34px);
-   cursor: pointer;
-   text-align: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
   }
   
-  .explore-menu-list-item .active{
-    border: 4px solid tomato;
-    padding: 2px;
+  .explore-menu h1 {
+    color: #333;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 2.2rem;
+    letter-spacing: -0.5px;
+  }
+  
+  .explore-menu-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 40px;
+    width: 100%;
+  }
+  
+  .explore-menu-list-item img {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+  }
+  
+  .explore-menu-list-item:hover img {
+    transform: translateY(-5px);
+  }
+  
+  .explore-menu-list-item p {
+    margin-top: 16px;
+    color: #333;
+    font-size: 1.2rem;
+    font-weight: 400;
+    text-align: center;
+  }
+  
+  .explore-menu-list-item .active {
+    position: relative;
+    border: none;
+    padding: 0;
+  }
+  
+  .explore-menu-list-item .active::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+    box-shadow: 0 0 0 3px #4CAF50;
+    pointer-events: none;
+  }
+  
+  @media (max-width: 768px) {
+    .explore-menu-list {
+      grid-template-columns: 1fr;
+    }
+    
+    .explore-menu h1 {
+      font-size: 1.8rem;
+    }
+    
+    .explore-menu-list-item p {
+      font-size: 1rem;
+    }
   }

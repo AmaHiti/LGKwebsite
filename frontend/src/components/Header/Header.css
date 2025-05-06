@@ -1,44 +1,90 @@
-.header{
-    height: 34vw;
-    margin: 30px auto;
-    background: url('header_img.png') no-repeat;
-    background-size: contain;
-    position: relative;
-    border-radius:15px;
-    
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden; /* Prevent horizontal scrolling */
 }
-.header-contents{
-    position: absolute;
-    display: flex;
-    flex-direction: column;
-    align-items: start;
-    gap: 1.5vw;
-    max-width: 50%;
-    bottom: 10%;
-    left: 6vw;
 
+.header {
+  height: 100vh;
+  width: 100vw;
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('../../assets/header_img.jpg') no-repeat;
+  background-size: cover;
+  background-position: center center;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  transform: translateX(-50%);
+  left: 50%;
 }
-.header-contents h2{
-    font-weight: 700;
-    color: rgb(248, 248, 248);
-    font-size: max(4.5vw,22px);
-    text-shadow: 4px 4px rgb(16, 16, 16);
-}
-.header-contents button{
-    background-color: #fceb05; 
-    border: nonw;
-    border-radius: 50px;
-    color: rgb(5, 5, 5);
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    cursor: pointer;
-    font-size: l;
-}
-.header-contents button:hover{
-    background-color: #ffffff;
 
+.header-contents {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2vw;
+  max-width: 80%;
+  text-align: center;
+  z-index: 2;
+  margin: 0 auto;
 }
-    
+
+/* Add an overlay to make text more readable */
+.header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4); /* Dark overlay for better text visibility */
+  z-index: 1;
+}
+
+.header-contents {
+  z-index: 2; /* Make sure content sits above the overlay */
+}
+
+.header-contents p {
+  font-weight: 400;
+  color: rgb(255, 255, 255);
+  font-size: max(1.2vw, 16px);
+  letter-spacing: 1px;
+  margin: 0;
+}
+
+.header-contents h1 {
+  font-weight: 700;
+  color: rgb(255, 255, 255);
+  font-size: max(5vw, 32px);
+  margin: 0;
+  letter-spacing: 2px;
+}
+
+.header-contents button {
+  background-color: #4C8C2B;
+  border: none;
+  border-radius: 5px;
+  color: rgb(255, 255, 255);
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  letter-spacing: 1px;
+  margin-top: 10px;
+  transition: background-color 0.3s ease;
+}
+
+.header-contents button:hover {
+  background-color: #3a6a21;
+}

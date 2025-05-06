@@ -17,6 +17,7 @@ const App = () => {
        <ToastContainer/>
   {showLogin?<LoginPopup setShowLogin={setShowLogin}/>:<></>}
   <Navbar setShowLogin={setShowLogin}/>
+  
     <div className="app">
       <Routes>
         <Route path='/' element={<Home/>}/>

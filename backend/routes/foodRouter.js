@@ -29,17 +29,17 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 foodRouter.post('/add', upload.single('image'), async (req, res) => {
-    const { id,name, description, price, category } = req.body;
+    const { name, description, price, category } = req.body;
     if (!req.file) {
         return res.status(400).json({ success: false, message: 'Image is required' });
     }
     const image = req.file.filename;
     const INSERT_FOOD_QUERY = `
-        INSERT INTO foods (FoodID,name,description, price, image, category)
-        VALUES (?, ?, ?, ?, ?,?)
+        INSERT INTO foods (name, description, price, image, category)
+        VALUES (?, ?, ?, ?, ?)
     `;
     try {
-        await pool.query(INSERT_FOOD_QUERY, [id,name, description, price, image, category]);
+        await pool.query(INSERT_FOOD_QUERY, [name, description, price, image, category]);
         res.status(201).json({ success: true, message: 'Food added successfully' });
     } catch (error) {
         console.error('Error adding food:', error);
