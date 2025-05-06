@@ -15,11 +15,9 @@ const FoodItem = ({ id, name, price, description, image }) => {
 
   const handleAddToCart = () => {
     if (token) {
-      addToCart(id);
+      addToCart(parseInt(id));
     } else {
-      toast.error("You need to be logged in to add items to the cart.", {
-        
-      });
+      toast.error("You need to be logged in to add items to the cart.", {});
     }
   };
 

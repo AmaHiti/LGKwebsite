@@ -3,20 +3,26 @@ import { createOrder, getOrdersByUserId, listOrders, updateOrderStatus, updateOr
 import pool from "../config/db.js";
 
 export const createOrderController = async (req, res) => {
-    
     const { userId, cartItems } = req.body;
+    console.log('Creating order with userId:', userId);
+    console.log('Cart items:', cartItems);
 
     try {
-        
         for (const itemId in cartItems) {
             const quantity = cartItems[itemId];
-            await createOrder(userId, itemId, quantity);
+            const foodId = parseInt(itemId);
+            if (isNaN(foodId)) {
+                console.error('Invalid FoodID:', itemId);
+                continue;
+            }
+            console.log('Creating order item - FoodID:', foodId, 'Quantity:', quantity);
+            await createOrder(userId, foodId, quantity);
         }
         
-        res.status(201).send('Order created successfully');
+        res.status(201).json({ message: 'Order created successfully' });
     } catch (error) {
         console.error('Error creating order:', error);
-        res.status(500).send('Internal Server Error');
+        res.status(500).json({ message: 'Internal Server Error', error: error.message });
     }
 };
 
@@ -24,16 +30,18 @@ export const createOrderController = async (req, res) => {
 
 export const getOrdersByUserIdController = async (req, res) => {
     const { userId } = req.body;
+    console.log('Getting orders for userId:', userId);
     try {
         const orders = await getOrdersByUserId(userId);
+        console.log('Found orders:', orders);
         if (orders.length > 0) {
             res.status(200).json(orders);
         } else {
-            res.status(404).send('Orders not found for this user');
+            res.status(404).json({ message: 'No orders found for this user' });
         }
     } catch (error) {
         console.error('Error getting orders by user ID:', error);
-        res.status(500).send('Internal Server Error');
+        res.status(500).json({ message: 'Internal Server Error', error: error.message });
     }
 };
 

@@ -22,13 +22,6 @@ const Cart = () => {
 
   const calculateDiscountedPrice = (item) => {
     let price = item.price;
-    if (item.FoodID.startsWith("O001")) {
-      price *= 0.85; 
-    } else if (item.FoodID.startsWith("O002")) {
-      price *= 0.9; 
-    } else if (item.FoodID.startsWith("O003")) {
-      price *= 0.88; 
-    }
     return price;
   };
 
@@ -50,9 +43,12 @@ const Cart = () => {
       }
 
       const userId = localStorage.getItem("userId");
-      const cartItems = JSON.parse(localStorage.getItem("cartItems"));
-
-      const orderDetails = { userId, cartItems };
+      const orderDetails = { 
+        userId, 
+        cartItems: Object.fromEntries(
+          Object.entries(cartItems).filter(([_, quantity]) => quantity > 0)
+        )
+      };
 
       const response = await axios.post(`${url}/api/order/place`, orderDetails, {
         headers: { token },
@@ -73,10 +69,10 @@ const Cart = () => {
         await createOrderDirectly();
         
         // Clear the cart after successful order creation
+        clearCart();
         
-        
-        // Navigate to order page
-        navigate("/order");
+        // Navigate to my orders page
+        navigate("/myorder");
         
         toast.success("Order placed successfully!");
       } else {

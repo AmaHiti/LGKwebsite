@@ -30,13 +30,13 @@ const Footer = () => {
         <div className="footer-content-right">
           <h2>GET IN TOUCH</h2>
           <ul>
-            <li>+94714568013</li>
-            <li>tfcresturent@gmail.com</li>
+            <li>+94704027700</li>
+            <li>lifesgoodkitchen@gmail.com</li>
           </ul>
         </div>
       </div>
       <hr />
-      <p className="footer-copyright">© 2024 Copyright:Thanusha Withana</p>
+      <p className="footer-copyright">© 2024 Copyright:Ama Hitiarachchi</p>
     </div>
   );
 };

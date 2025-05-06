@@ -77,12 +77,12 @@ export const assets = {
 
 export const menu_list = [
     {
-        menu_name: "Lunch",
-        menu_image: menu_1
+        menu_name: "Brunch",
+        menu_image: menu_2
     },
     {
-        menu_name: "Soup",
-        menu_image: menu_2
+        menu_name: "Lunch",
+        menu_image: menu_1
     },
     {
         menu_name: "Dinner",
@@ -153,28 +153,28 @@ export const food_list = [
         image: food_9,
         price: 890,
         description: "Food provides essential nutrients for overall health and well-being",
-        category: "Soup"
+        category: "Brunch"
     }, {
         _id: "10",
         name: "Egg Soup",
         image: food_10,
         price: 950,
         description: "Food provides essential nutrients for overall health and well-being",
-        category: "Soup"
+        category: "Brunch"
     }, {
         _id: "11",
         name: "Veg Soup",
         image: food_11,
         price: 1200,
         description: "Food provides essential nutrients for overall health and well-being",
-        category: "Soup"
+        category: "Brunch"
     }, {
         _id: "12",
         name: "Pumkin Soup",
         image: food_12,
         price: 990,
         description: "Food provides essential nutrients for overall health and well-being",
-        category: "Soup"
+        category: "Brunch"
     },
     {
         _id: "13",
@@ -182,7 +182,7 @@ export const food_list = [
         image: food_13,
         price: 1350,
         description: "Food provides essential nutrients for overall health and well-being",
-        category: "Soup"
+        category: "Brunch"
     },
     {
         _id: "14",
@@ -190,14 +190,14 @@ export const food_list = [
         image: food_14,
         price: 790,
         description: "Food provides essential nutrients for overall health and well-being",
-        category: "Soup"
+        category: "Brunch"
     }, {
         _id: "15",
         name: "Creamy Potato Soup",
         image: food_15,
         price: 1050,
         description: "Food provides essential nutrients for overall health and well-being",
-        category: "Soup"
+        category: "Brunch"
     }, {
         _id: "16",
         name: "Creamy Potato Soup",

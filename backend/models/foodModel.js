@@ -42,7 +42,6 @@ pool.query(ALTER_TABLE_QUERY, (err, results, fields) => {
     console.log('Foods table altered successfully');
 });
 
-
 const foodModel = {
     getAllFoods: (callback) => {
         const SELECT_ALL_QUERY = 'SELECT * FROM foods';

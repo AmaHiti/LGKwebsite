@@ -87,10 +87,11 @@ const StoreContextProvider = (props) => {
     try {
       setCartItems((prevCartItems) => {
         const updatedCartItems = { ...prevCartItems };
-        if (!updatedCartItems[itemId]) {
-          updatedCartItems[itemId] = 1;
+        const numericId = parseInt(itemId);
+        if (!updatedCartItems[numericId]) {
+          updatedCartItems[numericId] = 1;
         } else {
-          updatedCartItems[itemId]++;
+          updatedCartItems[numericId]++;
         }
         localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
         return updatedCartItems;
@@ -99,7 +100,7 @@ const StoreContextProvider = (props) => {
       if (token) {
         await axios.post(
           url + "/api/cart/add",
-          { itemId },
+          { itemId: parseInt(itemId) },
           { headers: { token } }
         );
       }
@@ -111,8 +112,9 @@ const StoreContextProvider = (props) => {
     try {
       setCartItems((prevCartItems) => {
         const updatedCartItems = { ...prevCartItems };
-        if (updatedCartItems[itemId] > 0) {
-          updatedCartItems[itemId]--;
+        const numericId = parseInt(itemId);
+        if (updatedCartItems[numericId] > 0) {
+          updatedCartItems[numericId]--;
           localStorage.setItem("cartItems", JSON.stringify(updatedCartItems));
         }
         return updatedCartItems;
@@ -121,7 +123,7 @@ const StoreContextProvider = (props) => {
       if (token) {
         await axios.post(
           url + "/api/cart/remove",
-          { itemId },
+          { itemId: parseInt(itemId) },
           { headers: { token } }
         );
       }
@@ -174,8 +176,9 @@ const StoreContextProvider = (props) => {
 
     let totalAmount = 0;
     for (const itemId in cartItems) {
-      if (cartItems[itemId] != 0) {
-        const itemInfo = foodList.find((product) => product.FoodID === itemId);
+      if (cartItems[itemId] > 0) {
+        const numericId = parseInt(itemId);
+        const itemInfo = foodList.find((product) => product.FoodID === numericId);
         if (itemInfo) {
           totalAmount += itemInfo.price * cartItems[itemId];
         }

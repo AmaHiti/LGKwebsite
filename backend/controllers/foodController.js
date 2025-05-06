@@ -3,13 +3,13 @@ import pool from "../config/db.js";
 
 const addFood = async (req, res) => {
     try {
-        const {id,name, description, price, category } = req.body;
+        const { name, description, price, category } = req.body;
         const image_filename = req.file.filename;
         const INSERT_FOOD_QUERY = `
-            INSERT INTO foods (FoodID,name, description, price, category, image)
-            VALUES (?, ?, ?, ?, ?,?)
+            INSERT INTO foods (name, description, price, category, image)
+            VALUES (?, ?, ?, ?, ?)
         `;
-        await pool.query(INSERT_FOOD_QUERY, [id,name, description, price, category, image_filename]);
+        await pool.query(INSERT_FOOD_QUERY, [name, description, price, category, image_filename]);
         res.json({ success: true, message: "Food Added" });
     } catch (error) {
         console.error('Error adding food:', error);

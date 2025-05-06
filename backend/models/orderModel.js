@@ -1,12 +1,22 @@
 import pool from "../config/db.js";
 
- const createOrder = async (userId, itemId, quantity,time="Still estimating",status="Pending") => {
+ const createOrder = async (userId, foodId, quantity, time="Still estimating", status="Pending") => {
     const INSERT_ORDER_QUERY = `
-        INSERT INTO orders (UserID, FoodID, quantity,time, status)
-        VALUES (?, ?, ?,?, ?)
+        INSERT INTO orders (UserID, FoodID, quantity, time, status)
+        VALUES (?, ?, ?, ?, ?)
     `;
     try {
-        await pool.query(INSERT_ORDER_QUERY, [userId, itemId, quantity,time, status]);
+        // Ensure all values are of the correct type
+        const values = [
+            parseInt(userId),
+            parseInt(foodId),
+            parseInt(quantity),
+            time,
+            status
+        ];
+        
+        console.log('Creating order with values:', values);
+        await pool.query(INSERT_ORDER_QUERY, values);
     } catch (error) {
         console.error('Error creating order:', error);
         throw error;
@@ -14,7 +24,24 @@ import pool from "../config/db.js";
 };
 
 const getOrdersByUserId = async (userId) => {
-    const SELECT_ORDERS_BY_USER_QUERY = 'SELECT * FROM orders WHERE UserID = ?';
+    const SELECT_ORDERS_BY_USER_QUERY = `
+        SELECT 
+            o.OrderID,
+            o.UserID,
+            o.FoodID,
+            o.quantity,
+            o.time,
+            o.status,
+            o.created_at,
+            f.name as food_name,
+            f.price,
+            f.image,
+            f.description
+        FROM orders o
+        JOIN foods f ON o.FoodID = f.FoodID
+        WHERE o.UserID = ?
+        ORDER BY o.created_at DESC
+    `;
     try {
         const [orders] = await pool.query(SELECT_ORDERS_BY_USER_QUERY, [userId]);
         return orders;
