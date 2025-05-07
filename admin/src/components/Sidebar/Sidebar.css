@@ -1,38 +1,191 @@
-.side-bar{
-    width: 18%;
+.side-bar {
+    width: 250px;
     min-height: 100vh;
-    border: 1.5px solid #000000;
-    border-top: 0;
-    background-color: rgb(218, 235, 229);
-    font-size: max(1vw,18px);
-   
-}
-.side-bar-options{
-    padding: 52px;
+    background-color: #FFFFFF;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.05);
+    font-size: 14px;
+    font-family: 'Outfit', sans-serif;
+    transition: all 0.3s ease;
+    border-right: 1px solid #E0E0E0;
+    border-top: none;
+    position: sticky;
+    top: 0;
+    left: 0;
+    z-index: 90;
+  }
+  
+  .side-bar-options {
+    padding: 20px 0;
     display: flex;
-    padding-left: 20%;
     flex-direction: column;
-    gap: 20px;
-}
- .a{
-    width: 30px;
-}
-
-.side-bar-option{
-    width: 135%;
+    gap: 10px;
+  }
+  
+  .side-bar-option {
     display: flex;
     align-items: center;
     gap: 12px;
-    border: 3px solid #a9a9a9;
-    border-right: 0;
-    padding: 8px 10px;
-    border-radius: 3px 0px 0px 3px;
+    padding: 14px 20px;
     cursor: pointer;
-    background-color:white;
-}
-.side-bar-option.active{
-    background-color: rgb(252, 252, 252);
-    border-color: tomato;
-
-
-}
+    color: #555555;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    text-decoration: none;
+    border-left: 4px solid transparent;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .side-bar-option img {
+    width: 20px;
+    height: 20px;
+    opacity: 0.8;
+    transition: all 0.2s ease;
+  }
+  
+  .side-bar-option .a,
+  .side-bar-option .b {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .side-bar-option p {
+    margin: 0;
+    transition: all 0.2s ease;
+  }
+  
+  .side-bar-option:hover {
+    background-color: #F6FBF6;
+    color: #388E3C;
+  }
+  
+  .side-bar-option:hover img {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+  
+  .side-bar-option.active {
+    background-color: #F0F8F0;
+    color: #2E7D32;
+    border-left: 4px solid #4CAF50;
+    font-weight: 600;
+  }
+  
+  .side-bar-option.active img {
+    opacity: 1;
+  }
+  
+  .side-bar-option.active::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 4px;
+    background-color: #4CAF50;
+    left: 0;
+    top: 0;
+  }
+  
+  /* Hover animation */
+  .side-bar-option::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(76, 175, 80, 0.05);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.3s ease;
+    z-index: -1;
+  }
+  
+  .side-bar-option:hover::before {
+    transform: scaleX(1);
+  }
+  
+  /* Section header (optional) */
+  .side-bar-header {
+    padding: 10px 20px;
+    margin-top: 10px;
+    color: #9E9E9E;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+  
+  /* Media queries for responsive design */
+  @media (max-width: 992px) {
+    .side-bar {
+      width: 200px;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .side-bar {
+      width: 80px;
+      overflow: hidden;
+    }
+    
+    .side-bar-option {
+      padding: 16px 0;
+      justify-content: center;
+    }
+    
+    .side-bar-option p {
+      display: none;
+    }
+    
+    .side-bar-option img {
+      width: 22px;
+      height: 22px;
+    }
+    
+    .side-bar-option.active {
+      border-left: none;
+      border-bottom: 3px solid #4CAF50;
+    }
+    
+    .side-bar-option.active::after {
+      width: 100%;
+      height: 3px;
+      left: 0;
+      top: auto;
+      bottom: 0;
+    }
+  }
+  
+  /* For mobile menu toggle functionality (if you want to add a toggle button later) */
+  .menu-toggle {
+    display: none;
+  }
+  
+  @media (max-width: 576px) {
+    .menu-toggle {
+      display: block;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: #4CAF50;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 10px rgba(76, 175, 80, 0.3);
+      z-index: 1000;
+      cursor: pointer;
+    }
+    
+    .side-bar {
+      transform: translateX(-100%);
+      position: fixed;
+    }
+    
+    .side-bar.open {
+      transform: translateX(0);
+    }
+  }
