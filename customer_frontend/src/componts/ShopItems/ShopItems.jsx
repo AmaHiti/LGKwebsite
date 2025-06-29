@@ -26,7 +26,7 @@ const ShopItems = () => {
     }
     // Monday-Thursday: 11am-9pm (11-21)
     else if (day >= 1 && day <= 4) {
-      return currentTime >= 6 && currentTime < 24;
+      return currentTime >= 0.5 && currentTime < 24;
     }
     // Friday-Saturday: 11am-11pm (11-23)
     else if (day === 5 || day === 6) {

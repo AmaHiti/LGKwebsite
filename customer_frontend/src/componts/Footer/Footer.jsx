@@ -41,11 +41,11 @@ const Footer = () => {
           <h2>Visit Us</h2>
           <ul>
             <div className="contact">
-              <a href="tel:+15551234567" className="contact1">
+              <a href="tel:0704027700" className="contact1">
                 <FaPhone className="contact-icon" />
                 <div>
-                  +1 (555) 123-4567 <br /> 
-                  +1 (555) 987-6543
+                  +94 (70) 402-7700 <br /> 
+                  +94 (78) 1276-579
                 </div>
               </a>
             </div>
@@ -58,7 +58,7 @@ const Footer = () => {
             <div className="contact">
               <a href="https://maps.google.com" target="_blank" rel="noopener noreferrer" className="contact">
                 <FaMapMarkerAlt className="contact-icon" />
-                123 Delicious Street,<br />Foodville, CA 90210
+                12 Sulaiman Terrace,<br />Jawatta road, Colombo 05
               </a>
             </div>
             <div className="contact">

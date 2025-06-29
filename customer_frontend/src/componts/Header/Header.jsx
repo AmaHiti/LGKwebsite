@@ -14,15 +14,15 @@ function Header() {
     {
       id: 1,
       imageUrl: assest.z, // Replace with food image
-      title: 'Welcome to Signature Cuisine',
+      title: 'Welcome to Lifes Good Kitchen',
       subtitle: 'A Taste of Excellence in Every Bite',
       buttonText: 'Explore Menu'
     },
     {
       id: 2,
       imageUrl: assest.zz, // Replace with restaurant interior or dish
-      title: 'Fresh Ingredients Daily',
-      subtitle: 'Crafted with Love & Passion',
+      title: 'Order ahead for dine-in or pickup',
+      subtitle: 'Enjoy fresh, delicious meals made just for you.',
       buttonText: 'Our Story'
     },
     {

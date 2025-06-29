@@ -239,14 +239,14 @@ const UserInvoices = () => {
                     <tr key={index}>
                       <td>{item.material_name}</td>
                       <td>{item.quantity}</td>
-                      <td>${item.unit_price}</td>
+                      <td>Rs.{item.unit_price}</td>
                     </tr>
                   ))}
                 </tbody>
               </Table>
               <hr />
-              <p><strong>Total Amount:</strong> ${invoice.total_amount}(With Services Charges)</p>
-              <p><strong>Paid Amount:</strong> ${invoice.paid_amount}</p>
+              <p><strong>Total Amount:</strong> Rs.{invoice.total_amount}(With Services Charges)</p>
+              <p><strong>Paid Amount:</strong> Rs.{invoice.paid_amount}</p>
               <p><strong>Payment Status:</strong> {invoice.payment_status}</p>
               <hr />
               <p className="text-center">Thank you for your purchase!</p>
@@ -292,20 +292,20 @@ const UserInvoices = () => {
                       onClick={() => handlePaymentOptionChange('full')}
                       className="flex-grow-1"
                     >
-                      Full Payment (${(currentInvoice?.total_amount - currentInvoice?.paid_amount).toFixed(2)})
+                      Full Payment (Rs.{(currentInvoice?.total_amount - currentInvoice?.paid_amount).toFixed(2)})
                     </Button>
                     <Button
                       variant={paymentOption === 'advance' ? 'primary' : 'outline-primary'}
                       onClick={() => handlePaymentOptionChange('advance')}
                       className="flex-grow-1"
                     >
-                      30% Advance (${((currentInvoice?.total_amount - currentInvoice?.paid_amount) * 0.3).toFixed(2)})
+                      30% Advance (Rs.{((currentInvoice?.total_amount - currentInvoice?.paid_amount) * 0.3).toFixed(2)})
                     </Button>
                   </div>
                 </div>
 
                 <p className="mb-3">
-                  <strong>Amount to Pay:</strong> ${paymentAmount.toFixed(2)}
+                  <strong>Amount to Pay:</strong> Rs.{paymentAmount.toFixed(2)}
                 </p>
 
                 <Form.Group className="mb-3">

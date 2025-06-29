@@ -1,5 +1,4 @@
 import './Sidebar.css';
-
 import {
   AppBar,
   Avatar,
@@ -19,33 +18,20 @@ import {
 } from '@mui/material';
 import { Link, useNavigate } from 'react-router-dom';
 import React, { useEffect, useState } from 'react';
-
-import AddCircleIcon from '@mui/icons-material/AddCircle';
-import BusinessCenterIcon from '@mui/icons-material/BusinessCenter';
-import DashboardIcon from '@mui/icons-material/Dashboard';
-import ExitToAppIcon from '@mui/icons-material/ExitToApp';
-import FormatListBulletedIcon from '@mui/icons-material/FormatListBulleted';
-import InventoryIcon from '@mui/icons-material/Inventory';
-import ListAltIcon from '@mui/icons-material/ListAlt';
-import MenuIcon from '@mui/icons-material/Menu';
-import PeopleIcon from '@mui/icons-material/People';
-import PersonIcon from '@mui/icons-material/Person';
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
+import {
+  AddCircle as AddCircleIcon,
+  BusinessCenter as BusinessCenterIcon,
+  Dashboard as DashboardIcon,
+  ExitToApp as ExitToAppIcon,
+  FormatListBulleted as FormatListBulletedIcon,
+  Inventory as InventoryIcon,
+  ListAlt as ListAltIcon,
+  Menu as MenuIcon,
+  People as PeopleIcon,
+  Person as PersonIcon,
+  ShoppingCart as ShoppingCartIcon
+} from '@mui/icons-material';
 import axios from 'axios';
-
-// Organized imports - all icons together
-
-
-
-
-
-
-
-
-
-
-
-
 
 const Sidebar = () => {
   const theme = useTheme();
@@ -68,7 +54,6 @@ const Sidebar = () => {
             token: token
           }
         });
-        // Access the supervisor_name within the user object
         setUsername(response.data.user.supervisor_name); 
         setLoading(false);
       } catch (error) {
@@ -80,9 +65,7 @@ const Sidebar = () => {
     fetchUsername();
   }, []);
   
-  // More descriptive and semantically appropriate icons for each menu item
   const menuItems = [
-  
     { text: 'Add Products', icon: <AddCircleIcon />, path: '/Add-products' },
     { text: 'List Products', icon: <FormatListBulletedIcon />, path: '/list-products' },
     { text: 'Orders', icon: <ShoppingCartIcon />, path: '/n-orders' },
@@ -92,7 +75,7 @@ const Sidebar = () => {
   return (
     <Box>
       {isMobile && (
-        <AppBar position="sticky" sx={{ backgroundColor: 'rgb(235, 117, 21)' }}>
+        <AppBar position="sticky" sx={{ backgroundColor: '#FF8C42' }}>
           <Toolbar>
             <IconButton
               color="inherit"
@@ -110,12 +93,12 @@ const Sidebar = () => {
 
       <Drawer
         sx={{
-          width: 280,
+          width: 200,
           flexShrink: 0,
           '& .MuiDrawer-paper': {
-            width: 280,
+            width: 200,
             boxSizing: 'border-box',
-            background: 'linear-gradient(to bottom,rgb(235, 117, 21),rgb(205, 93, 8))',
+            background: 'linear-gradient(to bottom, #FF8C42, #E86A33)',
             color: 'white',
           },
         }}
@@ -127,28 +110,31 @@ const Sidebar = () => {
           keepMounted: true,  
         }}
       >
-        {/* Header with company logo area */}
         <Box sx={{ 
           display: 'flex', 
           flexDirection: 'column',
           alignItems: 'center', 
-          padding: '20px 10px',
-          backgroundColor: 'rgba(0,0,0,0.2)'
+          padding: '16px 8px',
+          backgroundColor: 'rgba(0,0,0,0.1)'
         }}>
           <Avatar 
             sx={{ 
               bgcolor: '#fff', 
-              color: '#1a237e',
-              width: 70, 
-              height: 70, 
+              color: '#FF8C42',
+              width: 56,
+              height: 56, 
               mb: 1,
-              boxShadow: '0 4px 10px rgba(0,0,0,0.2)'
+              boxShadow: '0 2px 6px rgba(0,0,0,0.1)'
             }}
           >
-            <BusinessCenterIcon sx={{ fontSize: 40 }} />
+            <BusinessCenterIcon sx={{ fontSize: 32 }} />
           </Avatar>
           
-          <Typography variant="h6" sx={{ fontWeight: 600, fontSize: '1.2rem' }}>
+          <Typography variant="h6" sx={{ 
+            fontWeight: 600, 
+            fontSize: '1rem',
+            textAlign: 'center'
+          }}>
             Kitchen Management
           </Typography>
           
@@ -160,7 +146,7 @@ const Sidebar = () => {
               color: '#fff', 
               borderColor: 'rgba(255,255,255,0.5)', 
               mt: 1,
-              fontSize: '0.85rem',
+              fontSize: '0.75rem',
               '& .MuiChip-label': {
                 fontWeight: 500
               }
@@ -168,7 +154,7 @@ const Sidebar = () => {
           />
         </Box>
 
-        <Box sx={{ overflow: 'auto', overflowX: 'hidden', mt: 2 }}>
+        <Box sx={{ overflow: 'auto', overflowX: 'hidden', mt: 1 }}>
           <List>
             {menuItems.map((item, index) => (
               <React.Fragment key={item.text}>
@@ -178,28 +164,41 @@ const Sidebar = () => {
                   to={item.path}
                   sx={{
                     '&:hover': {
-                      backgroundColor: 'rgba(255,255,255,0.1)',
+                      backgroundColor: 'rgba(255,255,255,0.15)',
                     },
                     borderRadius: '4px',
-                    mx: 1,
-                    mb: 0.5
+                    mx: 0.5,
+                    mb: 0.25,
+                    py: 1,
+                    px: 1.5
                   }}
                 >
-                  <ListItemIcon sx={{ color: 'rgba(255,255,255,0.8)', minWidth: '40px' }}>
+                  <ListItemIcon sx={{ 
+                    color: '#fff',
+                    minWidth: '36px'
+                  }}>
                     {item.icon}
                   </ListItemIcon>
-                  <ListItemText primary={item.text} />
+                  <ListItemText 
+                    primary={item.text} 
+                    primaryTypographyProps={{
+                      fontSize: '0.875rem'
+                    }}
+                  />
                 </ListItem>
                 {index < menuItems.length - 1 && (
-                  <Divider sx={{ my: 0.5, backgroundColor: 'rgba(255,255,255,0.1)', mx: 2 }} />
+                  <Divider sx={{ 
+                    my: 0.25,
+                    backgroundColor: 'rgba(255,255,255,0.1)', 
+                    mx: 1
+                  }} />
                 )}
               </React.Fragment>
             ))}
           </List>
         </Box>
 
-        {/* Logout button (optional) */}
-        <Box sx={{ mt: 'auto', p: 2 }}>
+        <Box sx={{ mt: 'auto', p: 1 }}>
           <ListItem 
             button 
             onClick={() => {
@@ -207,23 +206,33 @@ const Sidebar = () => {
               navigate('/');
             }}
             sx={{
-              backgroundColor: 'rgba(0,0,0,0.2)',
+              backgroundColor: 'rgba(0,0,0,0.1)',
               borderRadius: '4px',
               '&:hover': {
-                backgroundColor: 'rgba(0,0,0,0.3)',
-              }
+                backgroundColor: 'rgba(0,0,0,0.2)',
+              },
+              py: 1,
+              px: 1.5
             }}
           >
-            <ListItemIcon sx={{ color: 'rgba(255,255,255,0.8)', minWidth: '40px' }}>
+            <ListItemIcon sx={{ 
+              color: '#fff',
+              minWidth: '36px'
+            }}>
               <ExitToAppIcon />
             </ListItemIcon>
-            <ListItemText primary="Logout" />
+            <ListItemText 
+              primary="Logout" 
+              primaryTypographyProps={{
+                fontSize: '0.875rem'
+              }}
+            />
           </ListItem>
         </Box>
       </Drawer>
 
-      <Box sx={{ marginLeft: isMobile ? 0 : 280, transition: 'margin 0.3s' }}>
-        {/* This is where your main content goes */}
+      <Box sx={{ marginLeft: isMobile ? 0 : 200, transition: 'margin 0.3s' }}>
+        {/* Main content area */}
       </Box>
     </Box>
   );

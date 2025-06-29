@@ -152,10 +152,12 @@ const CustomNavbar = ({ isHomePage }) => {
           <Navbar.Toggle aria-controls="basic-navbar-nav" onClick={handleToggle} />
           <Navbar.Collapse id="basic-navbar-nav" in={isMenuOpen}>
             <Nav className="mx-auto custom-nav">
+  
               <Nav.Link onClick={() => handleLinkClick('/')}>Home</Nav.Link>
               <Nav.Link onClick={() => handleLinkClick('/menu')}>Menu</Nav.Link>
               <Nav.Link onClick={() => handleLinkClick('#footer')}>Contact</Nav.Link>
               <Nav.Link onClick={() => handleLinkClick('#footer')}>About</Nav.Link>
+              <Nav.Link onClick={() => handleLinkClick('/reservations')}>Reservation</Nav.Link>
             </Nav>
 
             {!isAuthenticated && (
