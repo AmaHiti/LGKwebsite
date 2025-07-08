@@ -76,7 +76,7 @@ const OrdersComponent = () => {
               <CurrentStatusBadge status={order.current_status} />
               <OrderStatusBadge status={order.order_status} />
             </div>
-            <span>Total: ${order.total_amount}</span>
+            <span>Total: LKR {order.total_amount}</span>
           </div>
         </div>
         
@@ -93,7 +93,7 @@ const OrdersComponent = () => {
             </p>
             <p>
               <span className="info-label">Amount Paid:</span> 
-              ${order.amount_paid}
+              LKR {order.amount_paid}
             </p>
           </div>
           
@@ -122,8 +122,8 @@ const OrdersComponent = () => {
                   <tr key={item.order_item_id}>
                     <td>{item.product_id}</td>
                     <td>{item.quantity}</td>
-                    <td>${item.unit_price}</td>
-                    <td>${(item.quantity * item.unit_price).toFixed(2)}</td>
+                    <td>LKR {item.unit_price}</td>
+                    <td>LKR {(item.quantity * item.unit_price).toFixed(2)}</td>
                   </tr>
                 ))}
               </tbody>
